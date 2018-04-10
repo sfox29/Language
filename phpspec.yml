@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Languagebook
+        psr4_prefix: Languagebook
+        src_path: app

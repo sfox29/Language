@@ -1,0 +1,64 @@
+div.top {
+    font-size: 16px;
+}
+div.username {
+    font-size: 16px;
+	position: relative;
+	text-align: right;
+	right: 186px;
+}
+table.buttons td {
+    padding: 2px;
+}
+div.relative {
+    position: relative;
+    left: 50px;
+	font-size: 16px;
+}
+table.relative th {
+    padding: 2px;
+	font-size: 16px;
+	background-color: #337ab7;
+    color: white;
+	border: 1px solid white;	
+}
+table.relative td {
+    padding: 2px;
+	font-size: 16px;
+}
+div.item {
+    position: relative;
+    left: 0px;
+	font-size: 16px;
+}
+table.item th {
+    padding: 2px;
+	font-size: 16px;
+    background-color: #337ab7;
+    color: white;
+	border: 1px solid white;
+}
+table.item td {
+    padding: 2px;
+	font-size: 16px;
+}
+div.selectors {
+    position: relative;
+    left: 0px;
+	font-size: 16px;
+}
+table.selectors th {
+    padding: 2px;
+	font-size: 16px;
+}
+table.selectors td {
+    padding: 2px;
+	font-size: 16px;
+}
+select.form-control {
+	width:160px;
+}
+textarea {
+   font-family: inherit;
+   font-size: inherit;
+}

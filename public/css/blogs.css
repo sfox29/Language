@@ -1,0 +1,107 @@
+.main strong, b {color: #336600;} 
+
+div.top {
+    font-size: 16px;
+	max-width: 900px;
+	margin: 0px 0px 0px;
+	padding: 0px;
+	
+}
+div.alert alert-success {
+	position:absolute;
+	left:40px;
+	top:500px;
+	text-align:left;
+}
+div.username {
+    font-size: 16px;
+	position: relative;
+	text-align: right;
+	right: 186px;
+}
+table.buttons td {
+    padding: 2px;
+}
+div.relative {
+    position: relative;
+	font-size: 16px;
+	width:700px;
+	top: 120px;
+}
+div.relative strong {
+	color: #336600;
+}
+div.page-header {
+    background-color:Linen;
+    color:#cc6600;
+	font-weight: bold;
+    text-align:left;
+	margin: 0px 0px 0px;
+	border-bottom: 0px;
+	width:1141px;
+	position: absolute;
+	left: 40px;
+	top: 22px;
+}
+div.nav {
+    background-color:Linen;
+	color: #cc6600;
+    height:700px;
+    width:200px;
+	position: absolute;
+    left: 1010px;
+	padding: 12px;
+}
+table.relative th {
+    padding: 2px;
+	font-size: 16px;
+	background-color: #336600;
+    color: linen;
+	border: 1px solid white;	
+}
+table.relative td {
+    padding: 2px;
+	font-size: 16px;
+	vertical-align: top;
+}
+div.item {
+    position: relative;
+    left: 0px;
+	font-size: 16px;
+}
+table.item th {
+    padding: 2px;
+	font-size: 16px;
+    background-color: #336600;
+    color: white;
+	border: 1px solid white;
+}
+table.item td {
+    padding: 2px;
+	font-size: 16px;
+}
+div.selectors {
+    position: relative;
+    left: 0px;
+	font-size: 16px;
+}
+table.selectors th {
+    padding: 2px;
+	font-size: 16px;
+}
+table.selectors td {
+    padding: 2px;
+	font-size: 16px;
+}
+select.form-control {
+	width:160px;
+	font-family: inherit;
+    font-size: inherit;
+}
+textarea {
+   font-family: inherit;
+   font-size: inherit;
+}
+a {
+	color: #336600;
+}
