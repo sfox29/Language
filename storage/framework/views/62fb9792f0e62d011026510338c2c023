@@ -1,0 +1,42 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/posts/' . $comment->comment_post_id)); ?>">Back to Post</a>
+<h2>
+<?php echo e($comment->comment_title); ?>	
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="nav">
+<img src="<?php echo e(URL::to('/')); ?>/img/sam.jpg" alt="Sam's picture" width="130" height="150"/>
+<br/>&nbsp<br/>
+<?php echo Form::open(array('url' => 'comments/' . $comment->comment_id . '/edit', 'class' => 'pull-left')); ?>
+
+				  <?php echo Form::hidden('_method', 'GET'); ?>
+
+                  <?php echo Form::submit('Edit this Comment', array('class' => 'btn btn-success')); ?>
+
+<?php echo Form::close(); ?>
+
+<br/>&nbsp<br/>
+<?php echo Form::open(array('url' => 'comments/' . $comment->comment_id, 'class' => 'pull-left')); ?>
+
+                   <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+                   <?php echo Form::submit('Delete this Comment', array('class' => 'btn btn-success')); ?>
+
+<?php echo Form::close(); ?>
+
+<br/>&nbsp<br/>
+<?php echo Form::open(array('url' => 'posts/' . $comment->comment_post_id, 'class' => 'pull-left')); ?>
+
+                   <?php echo Form::hidden('_method', 'GET'); ?>
+
+                   <?php echo Form::submit("View this Post", array('class' => 'btn btn-success')); ?>
+
+<?php echo Form::close(); ?>
+
+</div>
+<div class="relative">
+	<p><?php echo e($comment->comment_text); ?> </p>	
+</div>	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.blog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

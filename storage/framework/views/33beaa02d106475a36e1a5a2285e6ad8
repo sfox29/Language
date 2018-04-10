@@ -1,0 +1,60 @@
+<?php $__env->startSection('header'); ?>
+<table class="selectors"><tr><td>
+<?php echo Form::open(array('action' => 'ItemsController@index', 'method' => 'get', 'class' => 'pull-right')); ?>
+
+	                  <?php echo Form::submit('List Items', array('class' => 'btn btn-primary')); ?>
+
+	<?php echo Form::close(); ?>
+
+</td><td>&nbsp</td><td>
+<?php echo Form::open(array('url' => 'items/' . $item->item_id . '/edit', 'class' => 'pull-right')); ?>
+
+                   <?php echo Form::hidden('_method', 'GET'); ?>
+
+                  <?php echo Form::submit('Edit this Item', array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td><td>&nbsp</td><td>
+<?php echo Form::open(array('url' => 'items/' . $item->item_id, 'class' => 'pull-right')); ?>
+
+                   <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+                   <?php echo Form::submit('Delete this Item', array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td></tr></table>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="top">
+<table class="item"><tr><td><strong>Lemma:</strong> <?php echo e($item->item_lemma); ?></td><td><strong>Id: </strong><?php echo e($item->item_id); ?></tr>
+<tr><td width="280px"><strong>Class: </strong><?php echo e($item->item_class); ?></td><td width="280px"><strong>Subclass:</strong> <?php echo e($item->item_subclass); ?></td></tr>
+<tr><td><strong>Form Class:</strong> <?php echo e($item->item_formclass); ?></td><td>&nbsp</td></tr>
+	<?php if( $item->item_class == 'noun'): ?><tr style="display: none">
+		<?php else: ?> <tr>
+			<?php endif; ?>
+<td><strong>TAM:</strong> <?php echo e($item->item_tam); ?></td><td><strong>Person:</strong> <?php echo e($item->item_person); ?></td></tr><tr><td><strong>Gender:</strong> <?php echo e($item->item_gender); ?></td>
+<td><strong>Number:</strong> <?php echo e($item->item_number); ?></td></tr><tr><td><strong>Case:</strong> <?php echo e($item->item_nomcase); ?></td><td><strong>Polarity:</strong> <?php echo e($item->item_polarity); ?></td></tr>
+<tr><td colspan="2"><strong>Meaning: </strong> <?php echo e($item->item_meaning); ?></td></tr>
+<tr><td colspan="2"><strong>Notes: </strong> <?php echo e($item->item_notes); ?></td></tr>
+<tr><td colspan="2"><strong>Etymology: </strong> <?php echo e($item->item_etymology); ?></td></tr>
+<tr><td colspan="2"><strong>Related to: </strong> <?php echo e($item->item_related_to); ?></td></tr>
+<tr><td>	
+ 	<?php if($item->item_language_id): ?>
+	<strong>Language: </strong><?php echo e($language_name); ?></a>	
+	<?php endif; ?>
+	</td><td>
+ 	<?php if($item->item_type): ?>
+		<?php if($item->item_type == 1): ?>
+			<strong>Type: </strong>Lexical Item
+		<?php endif; ?>
+		<?php if($item->item_type == 2): ?>
+			<strong>Type: </strong>Pattern
+		<?php endif; ?>
+	<?php endif; ?>
+	</td></tr></table>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

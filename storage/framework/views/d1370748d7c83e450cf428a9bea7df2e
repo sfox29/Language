@@ -1,0 +1,25 @@
+<?php $__env->startSection('header'); ?>
+<?php if(isset($comment)): ?>
+	<a href="<?php echo e(url('/posts')); ?>">Back to the overview</a>
+<?php endif; ?>
+<h2>
+	<table class="top"><tr><td width="600px">
+	
+	All <?php if(isset($post)): ?> <?php echo e($post->post_name); ?> <?php endif; ?> Comments</td><td>
+		<a href="<?php echo e(url('comments/create')); ?>" class="btn btn-primary pull-right">Add a new comment</a>
+		</td><td>&nbsp</td><td>
+		<a href="<?php echo e(url('posts')); ?>" class="btn btn-warning pull-right">List Posts</a>
+		</td><td>&nbsp</td><td>
+		<a href="<?php echo e(url('blogs')); ?>" class="btn btn-warning pull-right">List Blogs</a>
+		</td></tr></table>		
+	</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<table class="item"><tr><th style="padding:2px; width:180px;">Comment Title</th><th style="padding:2px; width:180px;">Comment  Text</th><th style="text-align:right">Post</tr>
+<?php foreach($comments as $comment): ?>
+<tr><td><a href="<?php echo e(url('comments/'.$comment->comment_id)); ?>">
+<strong><?php echo e($comment->comment_title); ?></strong></a></td><td width="620px"><?php echo e($comment->comment_title); ?></td><td style="text-align:right;"><?php echo e(($comment->post_name)); ?></td></tr>		
+<?php endforeach; ?>
+</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

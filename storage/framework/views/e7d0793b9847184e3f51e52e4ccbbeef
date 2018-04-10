@@ -1,0 +1,25 @@
+<?php $__env->startSection('header'); ?>
+<?php if(isset($family)): ?>
+	<a href="<?php echo e(url('/')); ?>">Back to the overview</a>
+<?php endif; ?>
+<h2>
+	<table class="top"><tr><td width="600px">
+	
+	All <?php if(isset($family)): ?> <?php echo e($family->family_name); ?> <?php endif; ?> Languages</td><td>
+		<a href="<?php echo e(url('languages/create')); ?>" class="btn btn-primary pull-right">Add a new language</a>
+		</td><td>&nbsp</td><td>
+		<a href="<?php echo e(url('items')); ?>" class="btn btn-warning pull-right">List Items</a>
+		</td><td>&nbsp</td><td>
+		<a href="<?php echo e(url('families')); ?>" class="btn btn-warning pull-right">List Families</a>
+		</td></tr></table>		
+	</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<table class="item"><tr><th style="padding:2px; width:180px;">Language Name</th><th style="padding:2px; width:180px;">Language Description</th><th style="text-align:right">Number of Speakers</tr>
+<?php foreach($languages as $language): ?>
+<tr><td><a href="<?php echo e(url('languages/'.$language->language_id)); ?>">
+<strong><?php echo e($language->language_name); ?></strong></a></td><td width="620px"><?php echo e($language->language_description); ?></td><td style="text-align:right;"><?php echo e(number_format($language->language_speakers)); ?></td></tr>		
+<?php endforeach; ?>
+</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,63 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/items')); ?>">Back to overview</a>
+<h2>
+Update an Item
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::model($item, array('route' => array('items.update', $item->item_id), 'method' => 'PUT')); ?>
+
+	<?php echo Form::model($item, ['url' => '/items/'. $item->item_id]); ?>
+
+	<table class="item"><tr><td>
+	<?php echo Form::label('lemma','Lemma');; ?></td><td colspan="3"> <?php echo Form::text('item_lemma'); ?> <td>
+	</tr>
+	<tr><td>
+	<?php echo Form::label('class','Class');; ?></td><td> <?php echo Form::text('item_class'); ?> 
+	</td><td>
+	<?php echo Form::label('class','Subclass');; ?></td><td>  <?php echo Form::text('item_subclass'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('formclass','Formclass');; ?></td><td>  <?php echo Form::text('item_formclass'); ?>
+
+	</td><td>
+	<?php echo Form::label('tam','TAM');; ?></td><td>  <?php echo Form::text('item_tam'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('person','Person');; ?></td><td>  <?php echo Form::text('item_person'); ?>
+
+	</td><td>	
+	<?php echo Form::label('gender','Gender');; ?></td><td>  <?php echo Form::text('item_gender'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('number','Number');; ?> </td><td> <?php echo Form::text('item_number'); ?>
+
+	</td><td>	
+	<?php echo Form::label('case','Case');; ?></td><td>  <?php echo Form::text('item_nomcase'); ?> 
+	</td></tr><tr><td>	
+	<?php echo Form::label('polarity','Polarity');; ?></td><td>  <?php echo Form::text('item_polarity'); ?>
+
+	</td><td>
+	<?php echo Form::label('meaning','Meaning');; ?> </td><td colspan="3"> <?php echo Form::text('item_meaning'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('notes','Notes');; ?></td><td colspan="3"> <?php echo Form::text('item_notes'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('etymology','Etymology');; ?></td><td colspan="3">  <?php echo Form::text('item_etymology'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('related_to','Related to');; ?></td><td colspan="3">  <?php echo Form::text('item_related_to'); ?>
+
+	</td></tr><tr><td>	
+	<?php echo Form::label('Type','Type');; ?></td><td> <?php echo Form::select('item_type', $types, null, ['class' => 'form-control', 'style="width: 300px"']); ?></td><td>
+	<?php echo Form::label('language','Language');; ?></td><td> <?php echo Form::select('item_language_id', $languages, null, ['class' => 'form-control', 'style="width: 300px"']); ?>
+
+	</td></tr></table>
+	</br>
+	<?php echo Form::submit('Update Item', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

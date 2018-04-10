@@ -1,0 +1,59 @@
+<?php $__env->startSection('header'); ?>
+
+<h2>
+	
+	<table class="top"><tr><td width="600px">
+	All Items</td><td>
+	<a href="<?php echo e(url('items/create')); ?>" class="btn btn-primary pull-right">Add a new item</a>
+	</td><td>&nbsp</td><td>
+	<a href="<?php echo e(url('languages')); ?>" class="btn btn-warning pull-right">List Languages</a>
+	</td><td>&nbsp</td><td>
+	<a href="<?php echo e(url('families')); ?>" class="btn btn-warning pull-right">List Families</a>
+	</td></tr></table>		
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="selectors">
+<?php echo Form::open(array('action' => 'ItemsController@index', 'method' => 'get')); ?>
+
+<table><tr><td>
+<strong>Language</strong> <?php echo Form::select('select_language_id', [null =>' '] + $languages, $setLanguage, ['class' => 'form-control', 'onchange' => 'this.form.submit()']); ?>
+
+</td><td>
+<strong>Type</strong> <?php echo Form::select('select_item_type', [null =>' '] + $types, $setType, ['class' => 'form-control', 'onchange' => 'this.form.submit()']); ?>
+
+</td><td>
+<strong>Class</strong> <?php echo Form::select('select_item_class', [' ' =>' '] + $classes, $setClass, ['class' => 'form-control', 'onchange' => 'this.form.submit()']); ?>
+
+</td><td>
+<strong>Subclass</strong> <?php echo Form::select('select_item_subclass', [' ' =>' '] + $subclasses, $setSubclass, ['class' => 'form-control', 'onchange' => 'this.form.submit()']); ?>
+
+</td><td>
+<strong>Formclass</strong> <?php echo Form::select('select_item_formclass', [' ' =>' '] + $formclasses, $setFormclass, ['class' => 'form-control', 'onchange' => 'this.form.submit()']); ?></td><td>
+<strong>TAM</strong> <?php echo Form::select('select_item_tam', [' ' =>' '] + $tams, $setTam, ['class' => 'form-control', 'onchange' => 'this.form.submit()']); ?></td>
+</tr></table>
+<?php echo Form::close(); ?>
+
+</div>
+<div class="item">
+<table class="item"><tr><th width="220px">Item</th><th width="120px">Class</th><th width="120px">Subclass</th><th width="120px">Formclass</th><th width="120px">TAM</th><th width="100px">Person</th><th width="100px">Gender</th><th width="100px">Number</th><th width="120px">Case</th><th width="100px">Polarity</th><th width="300px">Meaning</th><th width="150px">Language</th></tr>
+<?php foreach($items as $item): ?>
+<tr><td><a href="<?php echo e(url('items/'.$item->item_id)); ?>"><strong><?php echo e($item->item_lemma); ?></strong></a></td>
+<td><?php echo e($item->item_class); ?></td>
+<td><?php echo e($item->item_subclass); ?></td>
+<td><?php echo e($item->item_formclass); ?></td>
+<td><?php echo e($item->item_tam); ?></td>
+<td><?php echo e($item->item_person); ?></td>
+<td><?php echo e($item->item_gender); ?></td>
+<td><?php echo e($item->item_number); ?></td>
+<td><?php echo e($item->item_nomcase); ?></td>
+<td><?php echo e($item->item_polarity); ?></td>
+<td><?php echo e($item->item_meaning); ?></td>
+<td><?php echo e($item->language_name); ?></td>
+</tr>
+<?php endforeach; ?>	
+</table>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,20 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/')); ?>">Back to overview</a>
+<h2>
+Update a Family
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::model($family, array('route' => array('families.update', $family->family_id), 'method' => 'PUT')); ?>
+
+	<?php echo Form::model($family, ['url' => '/families/'. $family->family_id]); ?>
+
+	<?php echo Form::label('name','Family Name');; ?> <?php echo Form::text('family_name'); ?> </p>
+	<?php echo Form::label('description','Family Description');; ?> <?php echo Form::text('family_description'); ?>  </p>	
+	</br>
+	<?php echo Form::submit('Update Family', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

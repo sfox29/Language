@@ -1,0 +1,23 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/')); ?>">Back to overview</a>
+<h2>
+Create a Language
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo $errors->first('language_name'); ?> 
+	<?php echo $errors->first('language_speakers'); ?> 
+	<?php echo Form::model($language, ['url' => '/languages/'. $language->language_id]); ?>
+
+	<?php echo Form::label('name','Language Name');; ?> <?php echo Form::text('language_name'); ?> </p>
+	<?php echo Form::label('description','Language Description');; ?> <?php echo Form::text('language_description'); ?>  </p>	
+	<?php echo Form::label('numberofspeakers', 'Number of Speakers');; ?> <?php echo Form::number('language_speakers'); ?></p>
+	<?php echo Form::label('family','Family');; ?> <?php echo Form::select('language_family_id', $families, null, ['class' => 'form-control', 'style="width: 400px"']); ?>
+
+	</br>
+	<?php echo Form::submit('Save Language', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

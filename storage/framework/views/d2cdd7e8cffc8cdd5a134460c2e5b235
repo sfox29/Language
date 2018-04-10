@@ -1,0 +1,27 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/posts')); ?>">Back to overview</a>
+<h2>
+Create a Post
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<div class="relative">
+	<?php echo $errors->first('post_name'); ?> 
+	<?php echo $errors->first('post_text'); ?> 
+	<?php echo Form::model($post, ['url' => '/posts/'. $post->post_id]); ?>
+
+	<input type="hidden" name="post_user_id" value="<?php echo $username;?>"/>
+	<table class="item">
+	<tr><td><strong>Post Name</strong></td><td><input name="post_name" value="<?php echo $post->post_name;?>"/></td></tr>
+	<tr><td><strong>Text</strong></td><td><textarea name="post_text" rows="8" cols="90"><?php echo $post->post_text; ?></textarea></td></tr>	
+	<tr><td><strong>Topic</strong></td><td><input name="post_topic" value="<?php echo $post->post_topic;?>"/></td></tr>
+	<tr><td><strong>Blog</strong></td><td><?php echo Form::select('post_blog_id', $blogs, $blog_id, ['class' => 'form-control', 'style="width: 400px"']); ?></td></tr>
+	</table>
+	</br>
+	<?php echo Form::submit('Save Post', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.blog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

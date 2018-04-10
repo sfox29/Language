@@ -1,0 +1,17 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/')); ?>">Back to overview</a>
+<h2>
+Create a Family
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::model($family, ['url' => '/families/'. $family->family_id]); ?>
+
+	<p>Family Name: <?php echo Form::text('family_name'); ?> </p>
+	<p>Family Description: <?php echo Form::text('family_description'); ?>  </p>
+	<?php echo Form::submit('Save Family', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

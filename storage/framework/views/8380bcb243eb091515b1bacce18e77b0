@@ -1,0 +1,25 @@
+<?php $__env->startSection('header'); ?>
+<?php if(isset($family)): ?>
+	<a href="<?php echo e(url('/')); ?>">Back to the overview</a>
+<?php endif; ?>
+<h2>
+	<table class="top">
+		<tr><td width="600px">	
+	All Families</td><td>
+		<a href="<?php echo e(url('families/create')); ?>" class="btn btn-primary pull-right">Add a new family</a>
+		</td><td>&nbsp</td><td>
+		<a href="<?php echo e(url('items')); ?>" class="btn btn-warning pull-right">List Items</a>
+		</td><td>&nbsp</td><td>
+		<a href="<?php echo e(url('languages')); ?>" class="btn btn-warning pull-right">List Languages</a>
+		</td></tr></table>		
+	</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<table class="relative"><tr><th style="padding:2px; width:180px;">Family Name</th><th style="padding:2px; width:180px;">Family Description</th><th style="padding:2px; width:180px;">Count of Languages</th></tr>
+<?php foreach($families as $family): ?>
+<tr><td style="padding:2px; width:180px;"><a href="<?php echo e(url('families/'.$family->family_id)); ?>">
+<strong><?php echo e($family->family_name); ?></strong></a></td><td style="padding:2px; width:180px;"><?php echo e($family->family_description); ?></td><td style="padding:2px; width:180px;"> <?php echo e($family->language_count); ?></td></tr>		
+<?php endforeach; ?>
+</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

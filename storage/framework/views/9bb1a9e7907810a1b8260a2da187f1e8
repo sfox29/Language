@@ -1,0 +1,26 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/comments')); ?>">Back to overview</a>
+<h2>
+Update a Comment
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<div class="relative">
+	<?php echo Form::model($comment, array('route' => array('comments.update', $comment->comment_id), 'method' => 'PUT')); ?>
+
+	<?php echo Form::model($comment, ['url' => '/comments/'. $comment->comment_id]); ?>
+
+	<input type="hidden" name="comment_user_id" value="<?php echo $username;?>"/>
+	<table class="item">
+	<tr><td><strong>Comment Title</strong></td><td><input name="comment_title" value="<?php echo $comment->comment_title;?>"/></td></tr>
+	<tr><td><strong>Text</strong></td><td><textarea name="comment_text" rows="4" cols="50"><?php echo $comment->comment_text; ?></textarea></td></tr>	
+	<tr><td><strong>Post</strong></td><td><?php echo Form::select('comment_post_id', $posts, $comment->comment_post_id, ['class' => 'form-control', 'style="width: 400px"']); ?></td></tr>
+	</table>
+	</br>
+	<?php echo Form::submit('Update Comment', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

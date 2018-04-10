@@ -1,0 +1,50 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/blogs')); ?>">Back to overview</a>
+<h2>
+<?php echo e($blog->blog_name); ?>	
+</h2>
+<?php echo e($blog->blog_description); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="nav">
+<img src="<?php echo e(URL::to('/')); ?>/img/sam.jpg" alt="Sam's picture" width="130" height="160"/>
+<br/><br/>	
+<?php echo Form::open(array('url' => 'blogs/' . $blog->blog_id . '/edit', 'class' => 'pull-left')); ?>
+
+                  <?php echo Form::hidden('_method', 'GET'); ?>
+
+                  <?php echo Form::submit('Edit this Blog', array('class' => 'btn btn-success')); ?>
+
+<?php echo Form::close(); ?>
+
+</br></br>
+<?php echo Form::open(array('url' => 'blogs/' . $blog->blog_id, 'class' => 'pull-left')); ?>
+
+                  <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+                  <?php echo Form::submit('Delete this Blog', array('class' => 'btn btn-success')); ?>
+
+<?php echo Form::close(); ?>
+
+</br></br>
+<?php echo Form::open(array('url' => 'posts/create?blog_id=' . $blog->blog_id, 'class' => 'pull-left')); ?>
+
+                  <?php echo Form::hidden('_method', 'GET'); ?>
+
+                  <?php echo Form::submit('Create a Post', array('class' => 'btn btn-success')); ?>
+
+<?php echo Form::close(); ?>
+
+</div>
+	<div class="relative">	
+	<table class="relative">	
+	<?php foreach($posts as $post): ?>
+			<tr><td style="vertical-align:top; width:700px">
+			<a href="<?php echo e(url('posts/'.$post->post_id)); ?>">
+			<strong><?php echo e($post->post_name); ?></strong></a> <?php echo e($post->post_text); ?> <strong>Topic: </strong><?php echo e($post->post_topic); ?></td></tr>
+			<tr><td>&nbsp</td></tr>		
+	<?php endforeach; ?>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.blog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

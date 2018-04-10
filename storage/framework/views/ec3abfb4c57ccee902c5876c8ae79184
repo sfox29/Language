@@ -1,0 +1,31 @@
+<!-- resources/views/auth/register.blade.php -->
+
+<?php $__env->startSection('header'); ?>
+<h2>
+Register a User
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php echo Form::open(array('url' => '/auth/register', 'method' => 'post')); ?>
+
+<?php echo csrf_field(); ?>
+
+<table class="item"><tr><td>
+<?php echo Form::label('username','Username');; ?></td><td> <?php echo Form::text('username'); ?> </td>
+</tr>
+<tr><td>
+<?php echo Form::label('email','Email');; ?></td><td> <?php echo Form::text('email'); ?> </td>
+</tr>
+<tr><td>
+<?php echo Form::label('password','Password');; ?></td><td> <?php echo Form::password('password'); ?> </td>
+</tr>
+<tr><td>
+<?php echo Form::label('confirmpassword','Confirm Password');; ?></td><td> <?php echo Form::password('password_confirmation'); ?> </td>
+</tr>
+</table>
+<?php echo Form::submit('Register User', ['class' => 'btn btn-primary']); ?>
+
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>	
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8"/>
+        <title>Languagebook</title>
+		<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.min.css')); ?>">
+		<link rel="stylesheet" href="<?php echo e(asset('css/languages.css')); ?>">
+	</head>
+    <body>
+        <div class="container">
+		<?php if(isset($username)): ?><div class="username">Username: <?php echo e($username); ?> </div><?php endif; ?>
+		<div class="page-header">
+			<?php echo $__env->yieldContent('header'); ?> 
+		</div>
+		<?php if(Session::has ('success')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('success')); ?>
+
+			</div>
+			<?php endif; ?>
+			<?php echo $__env->yieldContent('content'); ?>
+        </div>
+    </body>
+</html>

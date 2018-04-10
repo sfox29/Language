@@ -1,0 +1,22 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/blogs')); ?>">Back to overview</a>
+<h2>
+Update a Blog
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<div class="relative">
+	<?php echo Form::model($blog, array('route' => array('blogs.update', $blog->blog_id), 'method' => 'PUT')); ?>
+
+	<?php echo Form::model($blog, ['url' => '/blogs/'. $blog->blog_id]); ?>
+
+	<?php echo Form::label('name','Blog Name');; ?> <?php echo Form::text('blog_name'); ?> </p>
+	<?php echo Form::label('description','Blog Description');; ?> <?php echo Form::text('blog_description'); ?>  </p>	
+	</br>
+	<?php echo Form::submit('Update Blog', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.blog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,41 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/families')); ?>">Back to overview</a>
+<h2>
+<?php echo e($family->family_name); ?>	
+</h2>
+<table class="buttons"><tr><td>
+<?php echo Form::open(array('url' => 'families/' . $family->family_id . '/edit', 'class' => 'pull-left')); ?>
+
+                  <?php echo Form::hidden('_method', 'GET'); ?>
+
+                  <?php echo Form::submit('Edit this Family', array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td><td>&nbsp</td><td>
+<?php echo Form::open(array('url' => 'families/' . $family->family_id, 'class' => 'pull-left')); ?>
+
+                  <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+                  <?php echo Form::submit('Delete this Family', array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td></tr></table>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="top">
+	<strong>Family Name: </strong><?php echo e($family->family_name); ?> </br>
+	<strong>Family Description: </strong><?php echo e($family->family_description); ?> </br></br>
+</div>	
+	<div class="relative">	
+	<table class="relative"><tr><th style="width:180px">Language Name</th><th style="width:450px">Language Description</th><th style="width:120px; text-align:right;">Number of Speakers</th></tr>		
+	<?php foreach($languages as $language): ?>
+			<tr><td>
+			<a href="<?php echo e(url('languages/'.$language->language_id)); ?>">
+			<strong><?php echo e($language->language_name); ?></strong></td><td> <?php echo e($language->language_description); ?></a></td><td style="text-align:right;"><?php echo e(number_format($language->language_speakers)); ?></td></tr>
+		
+	<?php endforeach; ?>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

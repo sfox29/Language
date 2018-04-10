@@ -1,0 +1,57 @@
+<style>
+div.relative {
+    position: relative;
+    left: 50px;
+}
+div.top {
+    font-size: 16px;
+}
+</style>
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/')); ?>">Back to overview</a>
+<h2>
+<?php echo e($language->language_name); ?>	
+</h2>
+<table><tr><td>
+<?php echo Form::open(array('url' => 'languages/' . $language->language_id . '/edit', 'class' => 'pull-left')); ?>
+
+                   <?php echo Form::hidden('_method', 'GET'); ?>
+
+                  <?php echo Form::submit('Edit this Language', array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td><td>&nbsp</td><td>
+<?php echo Form::open(array('url' => 'languages/' . $language->language_id, 'class' => 'pull-left')); ?>
+
+                   <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+                   <?php echo Form::submit('Delete this Language', array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td>
+<td>&nbsp</td><td>
+<?php echo Form::open(array('url' => 'items', 'method' => 'get', 'class' => 'pull-left')); ?>
+
+<?php echo Form::hidden('select_language_id', $language->language_id); ?>
+
+<?php echo Form::submit("Show this Language's Items", array('class' => 'btn btn-warning')); ?>
+
+<?php echo Form::close(); ?>
+
+</td></tr></table>
+<?php $__env->stopSection(); ?>
+<div class="top">
+<?php $__env->startSection('content'); ?>
+	<p>Language Name: <?php echo e($language->language_name); ?> </p>
+	<p>Language Description: <?php echo e($language->language_description); ?> </p>
+	<p>Number of Speakers: <?php echo e(number_format($language->language_speakers)); ?></p>
+	
+ 	<?php if($language->language_family_id): ?>
+		Family: <?php echo e($family_name); ?></a>	
+	<?php endif; ?>
+	</p>
+</div>	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,23 @@
+<?php $__env->startSection('header'); ?>
+<a href="<?php echo e(url('/')); ?>">Back to overview</a>
+<h2>
+Update a Language
+</h2>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::model($language, array('route' => array('languages.update', $language->language_id), 'method' => 'PUT')); ?>
+
+	<?php echo Form::model($language, ['url' => '/languages/'. $language->language_id]); ?>
+
+	<?php echo Form::label('name','Language Name');; ?> <?php echo Form::text('language_name'); ?> </p>
+	<?php echo Form::label('description','Language Description');; ?> <?php echo Form::text('language_description'); ?>  </p>	
+	<?php echo Form::label('numberofspeakers', 'Number of Speakers');; ?> <?php echo Form::number('language_speakers'); ?></p>
+	<?php echo Form::label('family','Family');; ?> <?php echo Form::select('language_family_id', $families, $language->language_family_id, ['class' => 'form-control', 'style="width: 400px"']); ?>
+
+	</br>
+	<?php echo Form::submit('Update Language', ['class' => 'btn btn-primary']); ?>
+
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
